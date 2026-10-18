@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO 기본 메타태그 (구글 글로벌 & 네이버 동시 최적화) -->
+  <title>2019 Kia Sportage QL 2.0L TCI-R (121,815 km) | Intermittent Flashing DEF Warning & Urea Clog Diagnosis</title>
+  <meta name="description" content="[Bilingual Guide] 2019 스포티지 QL 2.0L TCI-R (121,815km) 요소수 경고등 간헐적 깜빡거림 및 라인 압력 2,587 hPa 저하. 배기 인젝터 홀 백화 온수 세척으로 6,713 hPa 정상화 및 수리비 0원 해결 리포트.">
+  <meta name="keywords" content="스포티지 QL 요소수 경고등 깜빡거림, 요소수 시스템 점검 깜빡임, SCR 도징 펌프 교체비용, 요소수 인젝터 백화, 요소수 라인 압력, Kia Sportage DEF blinking, SCR dosing pump replacement cost, urea crystal blockage, P20EE Kia">
+  <meta name="author" content="Automotive Diagnostic Lab">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph (카카오톡, 페이스북, 네이버 썸네일 카드) -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="2019 스포티지 QL 요소수 경고등 깜빡거림 | 펌프 교환 전 인젝터 홀 백화 확인!">
+  <meta property="og:description" content="주행 중 간헐적 경고등 깜빡임과 압력 2,587 hPa 정체 원인은 인젝터 홀 백화 100% 폐쇄. 관로 세척만으로 6,713 hPa 완벽 복구!">
+  <meta property="og:image" content="port blocked.jfif">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- 구조화 데이터 (JSON-LD: 구글 상단 리치 스니펫) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "2019 Kia Sportage QL Intermittent Flashing DEF Warning & SCR Urea Blockage Diagnosis",
+    "description": "Comprehensive diagnostic case study resolving an intermittent flashing DEF warning light caused by 100% urea crystallization at the exhaust injector port on a 2019 Kia Sportage QL 2.0L TCI-R (121,815 km).",
+    "image": "port blocked.jfif",
+    "author": {
+      "@type": "Person",
+      "name": "Professional Diagnostic Specialist"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Kia Sportage QL 2.0L TCI-R Diesel SCR Dosing System"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --primary-dark: #9a0007;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --warning-bg: #fff5f5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.65; padding: 20px; }
+    .container { max-width: 880px; margin: 0 auto; background: var(--card); padding: 32px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    
+    /* Top Bar & Language Switcher */
+    .top-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 16px; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+    .breadcrumbs { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
+    .breadcrumbs span { color: var(--primary); }
+    .lang-switcher { display: flex; gap: 6px; }
+    .lang-btn { background: #f1f5f9; border: 1px solid var(--border); padding: 6px 14px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; font-size: 0.85rem; color: var(--text-muted); }
+    .lang-btn:hover { background: #e2e8f0; }
+    .lang-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    h1 { font-size: 1.55rem; margin-bottom: 18px; color: #0f172a; line-height: 1.35; }
+    .summary-card { background: var(--warning-bg); border-left: 4px solid var(--primary); padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 26px; font-size: 0.95rem; }
+    .summary-card ul { list-style: none; }
+    .summary-card li { margin-bottom: 6px; }
+    .summary-card li:last-child { margin-bottom: 0; }
+    .summary-card strong { color: var(--primary-dark); }
+    
+    h2 { font-size: 1.25rem; margin: 30px 0 14px; border-left: 4px solid #334155; padding-left: 10px; color: #0f172a; }
+    p { margin-bottom: 14px; font-size: 1rem; color: #334155; word-break: keep-all; }
+
+    /* 비교 테이블 */
+    .table-wrapper { overflow-x: auto; margin: 22px 0; }
+    .compare-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 0.92rem; }
+    .compare-table th, .compare-table td { padding: 12px 10px; border: 1px solid var(--border); }
+    .compare-table th { background: #f1f5f9; font-weight: 700; color: #0f172a; }
+    .compare-table tr:nth-child(even) { background: #fafafa; }
+    .compare-table td.param { text-align: left; font-weight: 600; color: #334155; }
+    .compare-table .val-bad { color: var(--primary); font-weight: 700; background-color: #fef2f2; }
+    .compare-table .val-good { color: var(--success); font-weight: 700; background-color: #f0fdf4; }
+
+    /* 이미지 컨테이너 */
+    .image-container { margin: 24px 0; text-align: center; }
+    .image-container img { width: 100%; max-width: 600px; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
+    .image-caption { font-size: 0.86rem; color: var(--text-muted); margin-top: 8px; font-weight: 600; }
+
+    .tip-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px 20px; margin: 26px 0; color: #166534; font-size: 0.95rem; }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="top-bar">
+    <div class="breadcrumbs">
+      Category: <strong>Kia</strong> &gt; <span>Diesel (CRDi / TCI-R)</span>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-ko" onclick="switchLanguage('ko')">🇰🇷 한국어</button>
+      <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">🇺🇸 English</button>
+    </div>
+  </div>
+
+  <!-- ==================== KOREAN SECTION ==================== -->
+  <div id="content-ko">
+    <h1>스포티지 QL "요소수 경고등 간헐적 깜빡거림", 펌프 바꾸기 전에 '이곳' 먼저 보세요!</h1>
+    
+    <div class="summary-card">
+      <ul>
+        <li><strong>차량 정보:</strong> 2019 Kia SPORTAGE 2.0L TCI-R (실주행거리: 121,815 km)</li>
+        <li><strong>주요 증상:</strong> 상시 점등이 아닌, 주행 중 간헐적으로 요소수 경고등이 깜빡거림 (라인 압력 빌드업 지연)</li>
+        <li><strong>고장 원인:</strong> 배기 파이프 인젝터 마운트 홀의 요소수 결정체(백화 현상) 100% 폐쇄</li>
+        <li><strong>정비 결과:</strong> 부품 교환 0원, 관로 온수 세척만으로 압력(6,713 hPa) 및 NOx 저감(19 ppm) 완벽 복구</li>
+      </ul>
+    </div>
+
+    <h2>1. 실시간 스캔 데이터 정밀 비교 (고장 vs 수리 완료)</h2>
+    <p>경고등이 간헐적으로 깜빡이던 고장 상태(수리 전)와 관로 온수 세척 후(수리 완료)의 실제 스캐너 계측값 대조 표입니다.</p>
+    
+    <div class="table-wrapper">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>진단 파라미터</th>
+            <th>수리 전 (경고등 깜빡임 발생)</th>
+            <th>수리 후 (정상 완벽 복구)</th>
+            <th>데이터 판정 및 분석 결과</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="param">요소수 라인 압력</td>
+            <td class="val-bad">2,587 hPa (~2.58 bar)</td>
+            <td class="val-good">6,713 hPa (~6.71 bar)</td>
+            <td>규정 목표 압력(~6.5 bar) 정상 도달 및 안정 유지</td>
+          </tr>
+          <tr>
+            <td class="param">인젝터 테스트 듀티</td>
+            <td class="val-bad">0.00 % (분사 중단)</td>
+            <td class="val-good">정상 스파이크 펄스 개방</td>
+            <td>압력 미달 시 안전 로직으로 차단 → 압력 복구 후 자동 활성화</td>
+          </tr>
+          <tr>
+            <td class="param">전단 NOx 농도</td>
+            <td>220 ppm</td>
+            <td>179 ppm</td>
+            <td>엔진 연소 배출 가스 농도 (원가스)</td>
+          </tr>
+          <tr>
+            <td class="param">후단 NOx 농도</td>
+            <td class="val-bad">185 ppm (정화 실패)</td>
+            <td class="val-good">19 ppm (약 90% 저감)</td>
+            <td>정상 분사 개시로 촉매 내 SCR 환원 반응 완벽 복구</td>
+          </tr>
+          <tr>
+            <td class="param">SCR 촉매 온도</td>
+            <td>149.66 ℃</td>
+            <td>169.96 ℃</td>
+            <td>정상 환원 반응 활성화 온도 도달</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 사진 1 -->
+    <div class="image-container">
+      <img src="abblue line pressure low.jfif" alt="초기 라인 압력 저하 2587hPa 고장 스캔 데이터">
+      <div class="image-caption">▲ [사진 1] 초기 고장 진단: 라인 압력이 2,587 hPa에서 멈춰 더 이상 상승하지 못함</div>
+    </div>
+
+    <h2>2. 1차 점검: 전기적 하네스 점검 (배선 이상 배제)</h2>
+    <p>요소수 탱크 하부의 메인 전원 및 제어 커넥터를 탈거하여 점검한 결과, 핀 휨이나 수분 침투, 청록색 부식 없이 단자가 완벽하게 깨끗하여 전장 계통 고장이 아님을 확인했습니다.</p>
+    
+    <!-- 사진 2 -->
+    <div class="image-container">
+      <img src="adblue pump connector.jfif" alt="요소수 도징 펌프 하네스 커넥터 정상 단자 점검">
+      <div class="image-caption">▲ [사진 2] 도징 펌프 하네스 커넥터: 수분 유입 및 핀 부식 없이 정상 확인</div>
+    </div>
+
+    <h2>3. 스모킹 건: 인젝터 탈거 및 마운트 홀 100% 폐쇄 확인</h2>
+    <p>배기 파이프 중앙에 체결된 요소수 인젝터를 탈거하여 장착부 내부를 확인했습니다.</p>
+
+    <!-- 사진 3 -->
+    <div class="image-container">
+      <img src="injector.jfif" alt="배기 파이프 인젝터 체결부 하부 전경">
+      <div class="image-caption">▲ [사진 3] 배기 파이프 인젝터 탈거 위치 하부 전경</div>
+    </div>
+
+    <p>인젝터가 요소를 뿜어줘야 하는 배기 파이프 내부 구멍이 시멘트처럼 단단하게 굳은 새하얀 요소수 결정체(백화)로 완전히 틀어막혀 있었습니다. 토출구가 막혔으니 펌프가 아무리 회전해도 압력이 차오르지 못해 시스템이 간헐적으로 경고등을 깜빡거렸던 것입니다.</p>
+
+    <!-- 사진 4 -->
+    <div class="image-container">
+      <img src="port blocked.jfif" alt="배기 파이프 인젝터 홀 요소수 결정체 백화 100% 폐쇄 실물">
+      <div class="image-caption">▲ [사진 4 - 스모킹 건] 새하얀 요소수 결정체(백화)로 완전히 막혀버린 인젝터 분사구</div>
+    </div>
+
+    <h2>4. 관로 온수 세척 및 개방 완료</h2>
+    <p>배기 파이프 홀 내부의 단단한 결정체를 정밀 제거하고 따뜻한 물로 세척하여 배기 파이프 내부가 훤히 들여다보이도록 완벽하게 관로를 뚫었습니다.</p>
+
+    <!-- 사진 5 -->
+    <div class="image-container">
+      <img src="port clean.jfif" alt="온수 세척 후 완전히 개통된 인젝터 홀">
+      <div class="image-caption">▲ [사진 5] 세척 완료: 관로가 시원하게 개방되어 배기 파이프 내부 통로 확보</div>
+    </div>
+
+    <h2>5. 최종 검증: 완벽한 정화 데이터 확인</h2>
+    <p>인젝터 재체결 후 실시간 스캔 데이터를 측정한 결과, 라인 압력은 즉각 6,713 hPa로 안착되었고 후단 NOx 센서는 19 ppm까지 대폭 떨어지며 경고등 깜빡임 현상이 완전히 사라졌습니다.</p>
+
+    <!-- 사진 6 -->
+    <div class="image-container">
+      <img src="perfact data.jfif" alt="수리 후 라인 압력 6713hPa 및 NOx 19ppm 완벽 정화 스캔 데이터">
+      <div class="image-caption">▲ [사진 6 - 최종 검증] 라인 압력 6,713 hPa 정상 도달 및 후단 NOx 19 ppm 완벽 정화</div>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 정비 팁:</strong> 주행 중 요소수 경고등이 가끔씩 깜빡인다고 해서 무조건 100~200만 원짜리 펌프나 촉매부터 교환하지 마세요. 인젝터가 체결되는 배기 파이프 구멍의 백화 막힘 여부를 먼저 확인하는 것만으로도 수백만 원을 절약할 수 있습니다.
+    </div>
+  </div>
+
+  <!-- ==================== ENGLISH SECTION ==================== -->
+  <div id="content-en" style="display:none;">
+    <h1>Kia Sportage QL "Flashing DEF Light": Inspect THIS Before Replacing the Pump!</h1>
+    
+    <div class="summary-card">
+      <ul>
+        <li><strong>Vehicle:</strong> 2019 Kia SPORTAGE 2.0L TCI-R (Odometer: 121,815 km)</li>
+        <li><strong>Symptom:</strong> Intermittent flashing/blinking DEF warning indicator during driving (delayed line pressure buildup)</li>
+        <li><strong>Root Cause:</strong> 100% blockage of exhaust injector port by rock-hard urea crystallization</li>
+        <li><strong>Result:</strong> $0 parts replaced; hot-water port cleaning fully restored pressure (6,713 hPa) and cleared warning</li>
+      </ul>
+    </div>
+
+    <h2>1. Live Scan Data Comparison (Fault vs Restored)</h2>
+    <p>Direct comparison between the intermittent blinking fault state (pre-repair) and post-cleaning verified state:</p>
+    
+    <div class="table-wrapper">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Diagnostic Parameter</th>
+            <th>Fault State (Flashing Warning)</th>
+            <th>Restored State (Verified)</th>
+            <th>Analysis & Criteria</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="param">DEF Line Pressure</td>
+            <td class="val-bad">2,587 hPa (~2.58 bar)</td>
+            <td class="val-good">6,713 hPa (~6.71 bar)</td>
+            <td>Reached target spec (~6.5 bar) stably</td>
+          </tr>
+          <tr>
+            <td class="param">Injector Test Duty</td>
+            <td class="val-bad">0.00 % (Locked)</td>
+            <td class="val-good">Active Pulses (Max 100%)</td>
+            <td>Injection inhibited under low pressure → Restored</td>
+          </tr>
+          <tr>
+            <td class="param">Upstream NOx</td>
+            <td>220 ppm</td>
+            <td>179 ppm</td>
+            <td>Raw engine exhaust emissions</td>
+          </tr>
+          <tr>
+            <td class="param">Downstream NOx</td>
+            <td class="val-bad">185 ppm (No Conversion)</td>
+            <td class="val-good">19 ppm (~90% Reduction)</td>
+            <td>Active SCR catalyst reduction restored</td>
+          </tr>
+          <tr>
+            <td class="param">SCR Temperature</td>
+            <td>149.66 ℃</td>
+            <td>169.96 ℃</td>
+            <td>Operating conversion temperature achieved</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Image 1 -->
+    <div class="image-container">
+      <img src="abblue line pressure low.jfif" alt="Faulted DEF line pressure data at 2587 hPa">
+      <div class="image-caption">▲ [Fig 1] Initial Diagnostic: DEF line pressure stuck at 2,587 hPa</div>
+    </div>
+
+    <h2>2. Step 1: Harness Connector Inspection</h2>
+    <p>Inspected the main harness connector on the DEF pump module. All pins were dry, clean, and free from oxidation or water intrusion, ruling out electrical faults.</p>
+    
+    <!-- Image 2 -->
+    <div class="image-container">
+      <img src="adblue pump connector.jfif" alt="Clean pins on the DEF pump harness connector">
+      <div class="image-caption">▲ [Fig 2] Dosing pump harness connector: Clean pins, no corrosion</div>
+    </div>
+
+    <h2>3. The Smoking Gun: Injector Port Blockage</h2>
+    <p>Removing the DEF dosing injector from the exhaust pipe exposed the true culprit.</p>
+
+    <!-- Image 3 -->
+    <div class="image-container">
+      <img src="injector.jfif" alt="Exhaust injector mounting port area">
+      <div class="image-caption">▲ [Fig 3] View of the exhaust mounting flange with injector removed</div>
+    </div>
+
+    <p>The internal exhaust port was completely plugged solid with rock-hard white urea deposits. Fluid could not escape into the exhaust stream, preventing pressure from building up past 2.5 bar and triggering the flashing warning indicator.</p>
+
+    <!-- Image 4 -->
+    <div class="image-container">
+      <img src="port blocked.jfif" alt="100 percent urea crystal blockage at exhaust injector port">
+      <div class="image-caption">▲ [Fig 4 - Smoking Gun] Exhaust injector mounting port 100% sealed by urea crystallization</div>
+    </div>
+
+    <h2>4. Hot-Water Cleaning & Port Cleared</h2>
+    <p>Chipping out the crystal deposits and washing the mounting port with hot water completely restored full flow through the exhaust channel.</p>
+
+    <!-- Image 5 -->
+    <div class="image-container">
+      <img src="port clean.jfif" alt="Completely unblocked and cleaned injector mounting port">
+      <div class="image-caption">▲ [Fig 5] Post-cleaning: Port fully opened into the exhaust passage</div>
+    </div>
+
+    <h2>5. Final Verification Results</h2>
+    <p>Reinstalled the injector and monitored live data. Line pressure immediately locked in at 6,713 hPa, while downstream NOx dropped to 19 ppm and the flashing warning indicator cleared permanently.</p>
+
+    <!-- Image 6 -->
+    <div class="image-container">
+      <img src="perfact data.jfif" alt="Restored line pressure at 6713 hPa and downstream NOx at 19 ppm">
+      <div class="image-caption">▲ [Fig 6 - Verified] Line pressure sustained at 6,713 hPa, downstream NOx dropped to 19 ppm</div>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Tech Tip:</strong> When the DEF light flashes intermittently during driving, always inspect the physical exhaust injector port for crystal scaling before replacing expensive dosing pumps.
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Automotive Diagnostic Case Archive. All rights reserved.
+  </footer>
+</div>
+
+<script>
+  function switchLanguage(lang) {
+    const koBlock = document.getElementById('content-ko');
+    const enBlock = document.getElementById('content-en');
+    const btnKo = document.getElementById('btn-ko');
+    const btnEn = document.getElementById('btn-en');
+
+    if (lang === 'ko') {
+      koBlock.style.display = 'block';
+      enBlock.style.display = 'none';
+      btnKo.classList.add('active');
+      btnEn.classList.remove('active');
+      document.documentElement.lang = 'ko';
+    } else {
+      koBlock.style.display = 'none';
+      enBlock.style.display = 'block';
+      btnEn.classList.add('active');
+      btnKo.classList.remove('active');
+      document.documentElement.lang = 'en';
+    }
+  }
+
+  // 브라우저 언어 환경 자동 감지 (해외 유입 시 영어 기본 표시)
+  document.addEventListener('DOMContentLoaded', () => {
+    const userLang = navigator.language || navigator.userLanguage;
+    if (userLang && !userLang.toLowerCase().startsWith('ko')) {
+      switchLanguage('en');
+    }
+  });
+</script>
+
+</body>
+</html>
